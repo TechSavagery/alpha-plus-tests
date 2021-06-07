@@ -1,0 +1,22 @@
+{
+  "name": "alpha-plus-tests",
+  "version": "1.0.0",
+  "description": "Testing project for Alpha Plus web app and api's ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TechSavagery/alpha-plus-tests.git"
+  },
+  "author": "LaDell Erby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TechSavagery/alpha-plus-tests/issues"
+  },
+  "homepage": "https://github.com/TechSavagery/alpha-plus-tests#readme",
+  "devDependencies": {
+    "cypress": "^7.4.0"
+  }
+}
