@@ -105,6 +105,12 @@ To run this locally follow these steps.
 
 <!-- USAGE EXAMPLES -->
 
+#### Taurus 
+1. Install Python
+2. Intall Microsoft C++ Build Tools 
+3. Install Cython `pip install cython`
+4. Install Taurus `pip install bzt`
+
 ## Usage
 
 To Run Tests in specfic environments:
