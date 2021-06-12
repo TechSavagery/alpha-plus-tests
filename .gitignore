@@ -5,3 +5,4 @@ cypress/screenshots
 cypress/results
 cypress/fixtures/example.json
 loadtest.txt
+tokens.txt
