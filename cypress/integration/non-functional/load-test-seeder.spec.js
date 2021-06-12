@@ -3,13 +3,14 @@
 context("Load Test Seeder", () => {
   beforeEach(() => {});
   it("Create Student + Generate Token", () => {
+    var teacherToken = "test1234"
     cy.fixture("student-data").then((students) => {
       students.forEach((data, index) => {
         cy.wait(500);
         cy.log(index + 1 + " of " + test.length + "\n");
         cy.request({
           method: "POST",
-          url: Cypress.env("baseUrls").api + "addstudentmanual?token=$2b$10$F.Q5DDQOQqDhT5l2Q3j3rOxd1c1gSbq5dFQNspb2n.OrH357h8vZC",
+          url: Cypress.env("baseUrls").api + "addstudentmanual?token=" + teacherToken,
           body: {
             students: [
               {
