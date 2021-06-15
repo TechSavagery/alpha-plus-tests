@@ -3,9 +3,9 @@
     "defaultCommandTimeout": 30000,
     "env": {
       "baseUrls": {
-        "api": "https://demo-api.aplustesting.org/",
-        "studentPortal": "https://demo-student.aplustesting.org",
-        "teacherPortal": "https://demo-teacher.aplustesting.org/"
+        "api": "https://api.aplustesting.org/",
+        "studentPortal": "https://student.aplustesting.org/",
+        "teacherPortal": "https://teacher.aplustesting.org/"
       },
       "integrationFolder": "cypress/integration",
       "teacher-credentials": {

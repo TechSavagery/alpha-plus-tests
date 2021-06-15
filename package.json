@@ -4,7 +4,10 @@
   "description": "Testing project for Alpha Plus web app and api's ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run:load-test-uat" : "artillery run --output report-uat.json -k performance/api-endpoints-loadtest-uat.yml",
+    "report:load-test-uat" : "artillery report --output report-uat.html report-uat.json performance/api-endpoints-loadtest-uat.yml",
+    "load-test-uat" : "npm run run:load-test-uat && npm run report:load-test-uat"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,8 @@
   "homepage": "https://github.com/TechSavagery/alpha-plus-tests#readme",
   "devDependencies": {
     "cypress": "^7.4.0"
+  },
+  "dependencies": {
+    "artillery-plugin-metrics-by-endpoint": "^0.1.1"
   }
 }
