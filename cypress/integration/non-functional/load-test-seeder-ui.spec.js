@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 context("Load Test Seeder", () => {
-  beforeEach(() => {
-  });
+  beforeEach(() => {});
   it("Create Student + Generate Token", () => {
     cy.fixture("student-data").then((students) => {
       students.forEach((data, index) => {
@@ -25,17 +24,17 @@ context("Load Test Seeder", () => {
         cy.get("#studentList").click({
           force: true,
         });
-        cy.wait(3000)
-        cy.get("#addStudentButton",{
-          timeout: 60000
-        }).click()
+        cy.wait(3000);
+        cy.get("#addStudentButton", {
+          timeout: 60000,
+        }).click();
         cy.contains("Create Student").click();
         cy.get('[name="fname"]').clear().type(data.first_name);
         cy.get('[name="lname"]').clear().type(data.last_name);
         cy.get('[name="studentid"]').clear().type(data.student_id);
         cy.contains("Create").click();
-        cy.get('.ok_btn').click()
-        cy.get('#logoutTitle').click()
+        cy.get(".ok_btn").click();
+        cy.get("#logoutTitle").click();
 
         cy.wait(4000);
         cy.intercept("/studentlogin*").as("login");
@@ -48,10 +47,23 @@ context("Load Test Seeder", () => {
           timeout: 15000,
         }).then((interception) => {
           cy.log(interception.response.body.message.token);
-          cy.writeFile('uat-student-tokens.txt', `${interception.response.body.message.token}\r\n`, { flag: 'a+' })
-          cy.writeFile('uat-student-studentids.txt', `${interception.response.body.message.student.student_id}\r\n`, { flag: 'a+' })
+          cy.writeFile(
+            "uat-student-tokens.txt",
+            `${interception.response.body.message.token}\r\n`,
+            { flag: "a+" }
+          );
+          cy.writeFile(
+            "uat-student-studentids.txt",
+            `${interception.response.body.message.student.student_id}\r\n`,
+            { flag: "a+" }
+          );
+          cy.writeFile(
+            "uat-student-studentids-backend.txt",
+            `${interception.response.body.message.student._id}\r\n`,
+            { flag: "a+" }
+          );
         });
-        cy.wait(1500)
+        cy.wait(1500);
       });
     });
   });

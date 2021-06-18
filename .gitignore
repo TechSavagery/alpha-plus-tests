@@ -10,3 +10,5 @@ loadtest.txt
 tokens.txt
 uat-student-studentids.txt
 uat-student-tokens.txt
+student-credentials.csv
+uat-student-studentids-backend.txt

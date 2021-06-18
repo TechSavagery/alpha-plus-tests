@@ -5,60 +5,73 @@ config:
     metrics-by-endpoint: {}
   phases:
     - duration: 1
-      arrivalRate: 5
-      name: Warm up
-    - duration: 3
-      arrivalRate: 5
-      rampTo: 100
-      name: Ramp up load
-    - duration: 2
       arrivalRate: 100
+      name: Warm up
+    - duration: 30
+      arrivalRate: 500
+      rampTo: 30
+      name: Ramp up load
+    - duration: 60
+      arrivalRate: 1000
       name: Sustained load
+  payload:
+    path: "student-credentials.csv"
+    fields:
+      - "_id"
+      - "first"
+      - "last"
+      - "studentId"
+      - "token"
 
 scenarios:
-  - name: "POST /teacherlogin"
-    flow:
-      - post:
-          url: "/teacherlogin"
-          json: 
-            email: "test@test.com"
-            password: "test1234!"
-
-  - name: "POST /studentLogin"
-    flow:
-      - post:
-          url: "/studentLogin"
-          json:
-            first_name: "First001"
-            last_name: "Last001"
-            studentid: "4567891231"
+  - name: "GET /getclassrooms"
+    flow: 
+      - get:
+          url: "/getclassrooms?token{{token}}&studentId={{studentId}}&fName={{first}}&lname={{last}}"
 
   - name: "POST /loadmonitoring"
     flow:
       - post:
-          url: "/loadmonitoring?token=fasdfsdafsdafds"
+          url: "/loadmonitoring?token=$2b$10$M919ycCWi8j/1co8Wkb3R.izLfVWcDvbbpUjyUWx2.YhZDekIuSHS"
           json:
-            class_id: "fsdsd"
+            class_id: "5dc48f8e38b8b71f751e5bdf"
+  
+  - name: "POST /questions"
+    flow:
+      - post:
+          url: "/questions?token={{token}}"
+          json: 
+            student_id: "{{_id}}"
+            class_id: "5dc48f8e38b8b71f751e5bdf"
+            test_id: "m3_a_1_2"
 
   - name: "POST /pendinganswers"
     flow:
       - post:
-          url: "/pendinganswers?token=$2b$10$3p2Jsd6LVZiWyZYusjBocO0XleN/p6FASJD90QNqy8tRvf.V/0L5y"
+          url: "/pendinganswers?token={{token}}"
           json:
             data: 
               [
                 {
-                  question: 46,
-                  answer: 1,
-                  questionId: "m8_s003_q47",
-                  totalTime: 62,
+                  question: 0,
+                  answer: 3,
+                  questionId: "m3_a_1_2_q01",
+                  totalTime: 5,
                   objective_id: "58e0b9f9c14ef5d10bc1c136"
                 }
               ]
-            current_question: 34
-            total_time: 456
-            student: "599da246ddb1e3fb7718c71f"
-            classroom: "599d949ae52c7a0001de2ae1"
-            test_id: "m8_s003"
+            random_array:
+              [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            current_question: 0
+            total_time: 5
+            student: "{{_id}}"
+            classroom: "5dc48f8e38b8b71f751e5bdf"
+            test_id: "m3_a_1_2"
 
   
