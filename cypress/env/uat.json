@@ -1,6 +1,7 @@
 {
     "experimentalStudio": true,
     "defaultCommandTimeout": 30000,
+    "redirectionLimit": 5000,
     "env": {
       "baseUrls": {
         "api": "https://uat-api.aplustesting.org/",
@@ -9,13 +10,14 @@
       },
       "integrationFolder": "cypress/integration",
       "teacher-credentials": {
-        "email": "teachg@alphaplus.us",
-        "password": "Beta1234!"
+        "email": "wendy.pratt234@gmail.com",
+        "password": "AdminP@ssword2020",
+        "token": "$2b$10$pWt.hVgRlexUHmt9CyP32uzAnm308dIdcl9vEU4k2q6Vm/cbN2biq"
       },
       "school-info": {
-        "districtName": "Alpha Plus",
-        "schoolId": "599db39ce52c7a0001de2bc8",
-        "classId": "599d949ae52c7a0001de2ade"
+        "districtName": "Appable Test",
+        "schoolId": "5b851e553f7b03d240041510",
+        "classId": "5dc48f8e38b8b71f751e5bdf"
       }
     }
   }

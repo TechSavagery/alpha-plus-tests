@@ -1,8 +1,12 @@
 # cypress 
-cypress/integration/examples
+cypress/integration/non-functional/examples
 cypress/videos
 cypress/screenshots
 cypress/results
 cypress/fixtures/example.json
 loadtest.txt
+
+#Load Test See Data
 tokens.txt
+uat-student-studentids.txt
+uat-student-tokens.txt
