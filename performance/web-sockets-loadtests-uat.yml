@@ -1,0 +1,53 @@
+config:
+  target: "wss://uat-teacher.aplustesting.org/aplustesting/"
+  phases:
+    - duration: 15
+      arrivalCount: 500
+  ws:
+    subprotocols:
+      - json
+
+scenarios:
+  - name: UAT Alpha Plus Testing
+    engine: ws
+    flow:
+      - send:
+          event: '#handshake'
+          data: 
+            authToken: null
+          cid: 1
+      - send:
+          event: socket_student_join_room
+          data:
+            classId: "5dc48f8e38b8b71f751e5bdf"
+            studentId: "60cbda75afff8035c32b4adf"
+            testid: "m3_a_1_2"
+          cid: 2
+      - think: 3
+      - send:
+          event: '#subscribe'
+          data:
+            channel: "5dc48f8e38b8b71f751e5bdf_m3_a_1_2"
+          cid: 3
+      - think: 3
+      - send:
+          event: "socket_student_join_room"
+          data:
+            classId: "5dc48f8e38b8b71f751e5bdf"
+            studentId: "60cbda75afff8035c32b4adf"
+            testid: "m3_a_1_2"
+          cid: 2
+      - think: 1
+      - loop:
+          send:
+            event: "socket_student_update_answer"
+            data:
+              studentId: "60cbda75afff8035c32b4adf"
+              testId: "m3_a_1_2"
+              question: 0
+              answer: 2
+              oldAwnser: 0
+              questionId: "m3_a_1_2_q01"
+              classroom_id: "5dc48f8e38b8b71f751e5bdf"
+            cid: 2
+        count: 100
